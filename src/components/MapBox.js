@@ -3,6 +3,7 @@ import ReactMapboxGl, { Source, Popup } from "react-mapbox-gl";
 import FooterIns from './Footer/FooterIns';
 import Masjid from './Istiqlal.jpg'
 
+								// BELOM KELAR
 const Map = ReactMapboxGl({
   accessToken: 'pk.eyJ1Ijoia3VldGFiYnkiLCJhIjoiY2psbmNham5rMWhocTN2bjdxYXo2Y29rMiJ9.owkPCPzjsCYupwR3IKoNtA'
 });
