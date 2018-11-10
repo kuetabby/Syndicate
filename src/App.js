@@ -1,6 +1,7 @@
 import React, {lazy, Suspense, Component} from 'react';
 import { Route, Link, BrowserRouter as Router, Switch } from 'react-router-dom';
 import './App.css';
+import {Spinner} from './components/Spinner'
 
 const PlaceCard = lazy(() => import('./components/PlaceCard'));
 const MapBox = lazy(() => import('./components/MapBox'));
@@ -10,7 +11,7 @@ class App extends Component {
   render() {
     return (
       <Router>
-      <Suspense fallback={<div> ... Loading </div>}>
+      <Suspense fallback={<Spinner size="large" />}>
       <div>
         <nav className=" bg-light-gray dt dt--fixed w-100 border-box pa3 ph5-ns bb b--black-10">
           <div className="dtc dn-ns w-third"></div>
@@ -20,10 +21,10 @@ class App extends Component {
           </div>
         </nav>
         <Switch>
-            <Route exact path="/" component={PlaceCard}/>
-            <Route path="/Search" component={PlaceCard}/>
-            <Route path="/MapState" component={MapBox}/>
-            <Route component={NotFound}/>
+            <Route exact path="/" component={ props => <PlaceCard {...props}/>}/>
+            <Route path="/Search" component={props => <PlaceCard {...props}/>}/>
+            <Route path="/MapState" component={props => <MapBox {...props}/>}/>
+            <Route component={props => <NotFound {...props}/>}/>
         </Switch>
         </div>
       </Suspense>

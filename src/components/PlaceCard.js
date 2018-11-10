@@ -1,9 +1,10 @@
-import React, { Component } from 'react';
+import React, { Suspense, Component } from 'react';
 import PlaceList from './Place/PlaceList';
 import FooterIns from './Footer/FooterIns';
 import SearchBox from './SearchBox/SearchBox';
 import Scroll from './Scroll/Scroll';
 import { places } from './Place/places';
+import { Spinner } from './Spinner'
 
 
 class PlaceCard extends Component {
@@ -32,21 +33,18 @@ class PlaceCard extends Component {
 			 place.region.toLowerCase().includes(searchfield.toLowerCase())
 		);
 	})
-
-	if(!places.length){
-		return <h1> Loading </h1>
-	}else{
-		return(
+	return(
 		<div className='tc'>
-      	<h1>Penyewaan Lapangan Badminton</h1>
-      	<SearchBox searchChange={this.onSearchChange}/>
-      	<Scroll>
-      		<PlaceList places={filteredPlace}/>
-      	</Scroll>
-      	<FooterIns />
+			<Suspense fallback={<Spinner size='medium' />}>
+	      		<h1>Penyewaan Lapangan Badminton</h1>
+	      			<SearchBox searchChange={this.onSearchChange}/>
+		      		<Scroll>
+		      			<PlaceList places={filteredPlace}/>
+		      		</Scroll>
+	      		<FooterIns />
+      		</Suspense>
       	</div>
-		);
-	}
+	);
   }
 }
 
