@@ -1,5 +1,5 @@
 import React, {lazy, Suspense, Component} from 'react';
-import { Route, Link, BrowserRouter as Router, Switch } from 'react-router-dom';
+import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
 import './App.css';
 import {Spinner} from './components/Spinner'
 
