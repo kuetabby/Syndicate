@@ -1,7 +1,7 @@
 import React from 'react';
 import Place from './Place'
 import { Link} from 'react-router-dom';
- 
+
 const PlaceList = ({places}) =>{
 	return(
 		<div>

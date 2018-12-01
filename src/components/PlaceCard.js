@@ -2,7 +2,6 @@ import React, { Suspense, Component } from 'react';
 import PlaceList from './Place/PlaceList';
 import FooterIns from './Footer/FooterIns';
 import SearchBox from './SearchBox/SearchBox';
-import Scroll from './Scroll/Scroll';
 import { places } from './Place/places';
 import { Spinner } from './Spinner'
 
@@ -38,9 +37,7 @@ class PlaceCard extends Component {
 			<Suspense fallback={<Spinner size='medium' />}>
 	      		<h1>Penyewaan Lapangan Badminton</h1>
 	      			<SearchBox searchChange={this.onSearchChange}/>
-		      		<Scroll>
 		      			<PlaceList places={filteredPlace}/>
-		      		</Scroll>
 	      		<FooterIns />
       		</Suspense>
       	</div>
