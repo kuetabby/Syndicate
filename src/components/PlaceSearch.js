@@ -2,7 +2,6 @@ import React from 'react'
 import { places } from './Place/places';
 import { Link } from 'react-router-dom';
 import { Map as LeafletMap, TileLayer, Marker, Popup } from 'react-leaflet'
-import Masjid from './Istiqlal.jpg'
 
 import FooterIns from './Footer/FooterIns';
 
@@ -29,8 +28,7 @@ const PlaceSearch = ({match}) => {
         />
         <Marker position={position}>
           <Popup position={position} style={{width: 'auto',height: 'auto'}}>
-            <img src={Masjid} alt='Place'/>
-            <p>{place.name}</p>
+            <p> Ini Lokasi yang Anda Cari </p>
           </Popup>
         </Marker>
     </LeafletMap>

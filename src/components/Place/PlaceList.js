@@ -11,6 +11,7 @@ const PlaceList = ({places}) =>{
 				<Link to={`/search/${user.id}`} key={i.toString()}>
 					<Place
 					region={places[i].region} 
+					images={places[i].images}
 					name={places[i].name} 
 					location={places[i].location} 
 					/>

@@ -10,13 +10,9 @@ class PlaceCard extends Component {
 	constructor(){
 		super();
 		this.state ={
-			places: [],
+			places: places,
 			searchfield: ''
 		}
-	}
-
-	componentDidMount(){
-		this.setState({places: places})
 	}
 
 	onSearchChange = (event) =>{
