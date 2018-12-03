@@ -13,7 +13,6 @@ const PlaceList = ({places}) =>{
 					region={places[i].region} 
 					images={places[i].images}
 					name={places[i].name} 
-					location={places[i].location} 
 					/>
 				</Link>
 				);

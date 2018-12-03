@@ -8,12 +8,18 @@ import FooterIns from './Footer/FooterIns';
 const PlaceSearch = ({match}) => {
   const place = places.find(i => i.id === parseInt(match.params.id))
 
-  const position = [-6.1753924, 106.8271528];
+  const position = place.coordinate
+  console.log(position)
   const mapStyle = {
   height: '400px'
   };
   if (!place) {
-    return <div><h1>Sorry, but the places was not found</h1></div>
+    return(
+      <div>
+        <Link to="/"> <h3>Back </h3></Link>
+        <h1>Sorry, but the places was not found</h1>
+      </div>
+    )
   }
   return (
     <div>
@@ -21,7 +27,7 @@ const PlaceSearch = ({match}) => {
     <LeafletMap
         style={mapStyle}
         center={position}
-        zoom={13}>
+        zoom={15}>
         <TileLayer
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
           url = 'http://{s}.tile.osm.org/{z}/{x}/{y}.png'
