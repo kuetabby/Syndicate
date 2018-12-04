@@ -8,7 +8,12 @@ const PlaceList = ({places}) =>{
 		{
 			places.map((user,i) =>{
 				return(
-				<Link to={`/search/${user.id}`} key={i.toString()}>
+				<Link style={{
+		              textDecoration: "none",
+		              color: "black"
+		            }} 
+		        to={`/search/${user.id}`}  
+		        key={i.toString()}>
 					<Place
 					region={places[i].region} 
 					images={places[i].images}

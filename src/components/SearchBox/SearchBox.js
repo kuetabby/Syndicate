@@ -1,10 +1,11 @@
 import React from 'react'
+import './style.css'
 
-const SearchBox = ({searchfield, searchChange}) =>{
+const SearchBox = ({searchChange}) =>{
 	return(
-		<div className='pa2'>
+		<div className="pa2">
 		 <input
-		 className='pa2 ba b--green bg-lightest-blue'
+		 className='search pa2 ba b--green bg-lightest-blue'
 		 type='search'
 		 placeholder='Search Your Region'
 		 onChange={searchChange} 
