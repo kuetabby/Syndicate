@@ -28,6 +28,7 @@ class PlaceCard extends Component {
 			 place.region.toLowerCase().includes(searchfield.toLowerCase())
 		);
 	})
+	console.log(filteredPlace)
 	return(
 		<div className='tc'>
 			<Suspense fallback={<Spinner size='medium' />}>
