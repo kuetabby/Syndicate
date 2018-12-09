@@ -16,6 +16,10 @@ class PlaceList extends Component{
 		this.setState({currentPage: page})
 	}
 
+componentDidUpdate(nextProps) {
+    if (nextProps !== this.props)  this.setState({ currentPage: 1 });
+  }
+
 	render(){
 		const places = this.props.places;
 		const {currentPage} = this.state;
