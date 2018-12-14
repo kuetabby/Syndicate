@@ -1,7 +1,7 @@
 import React from 'react'
 import './style.css'
 
-const SearchBox = ({searchChange}) =>{
+function SearchBox({searchChange}){
 	return(
 		<div className="pa2">
 		 <input

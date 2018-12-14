@@ -1,4 +1,4 @@
-import React, { Suspense, Component } from 'react';
+import React, { Suspense, useState } from 'react';
 import PlaceList from './Place/PlaceList';
 import FooterIns from './Footer/FooterIns';
 import SearchBox from './SearchBox/SearchBox';
@@ -6,21 +6,14 @@ import { places } from './Place/places';
 import { Spinner } from './Spinner'
 
 
-class PlaceCard extends Component {
-	constructor(){
-		super();
-		this.state ={
-			places: places,
-			searchfield: ''
-		}
+function PlaceCard(){
+	useState(places)
+	const [searchfield, setField] = useState('')
+
+	const onSearchChange = (event) =>{
+		setField(event.target.value)
 	}
 
-	onSearchChange = (event) =>{
-		this.setState({searchfield: event.target.value})
-	}
-
-  render(){
-  	const {places, searchfield} = this.state;
   	const filteredPlace = places.filter(place =>{
 		return(
 			 place.name.toLowerCase().includes(searchfield.toLowerCase())
@@ -33,13 +26,12 @@ class PlaceCard extends Component {
 		<div className='tc'>
 			<Suspense fallback={<Spinner size='medium' />}>
 	      		<h1>Penyewaan Lapangan Badminton</h1>
-	      			<SearchBox searchChange={this.onSearchChange}/>
+	      			<SearchBox searchChange={onSearchChange}/>
 		      			<PlaceList places={filteredPlace}/>
 	      		<FooterIns />
       		</Suspense>
       	</div>
 	);
-  }
 }
 
 export default PlaceCard;

@@ -1,4 +1,4 @@
-import React, {lazy, Suspense, Component} from 'react';
+import React, {lazy, Suspense} from 'react';
 import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
 import './App.css';
 import {Spinner} from './components/Spinner'
@@ -7,8 +7,7 @@ const PlaceCard = lazy(() => import('./components/PlaceCard'));
 const PlaceSearch = lazy(() => import('./components/PlaceSearch'));
 const NotFound = lazy(() => import('./components/notFound'));
 
-class App extends Component {
-  render() {
+function App(){
     return (
       <Router>
       <Suspense fallback={<Spinner size="large" />}>
@@ -22,7 +21,6 @@ class App extends Component {
       </Suspense>
       </Router>
     );
-  }
 }
 
 export default App;

@@ -1,33 +1,25 @@
-import React,{Component} from 'react';
+import React,{useState, useEffect} from 'react';
 import Place from './Place'
 import { Link} from 'react-router-dom';
 import Pagination from "react-paginating"
 
 
-class PlaceList extends Component{
-	constructor(props){
-		super(props)
-		this.state={
-			currentPage: 1
-		}
+function PlaceList(props){
+	const [currentPage, setCurrentPage] = useState(1)
+
+	const handlePageChange = (page) =>{
+		setCurrentPage(page)
 	}
 
-	handlePageChange = (page) =>{
-		this.setState({currentPage: page})
-	}
+	useEffect(() =>{
+		setCurrentPage(1)
+	},[props.places])
 
-componentDidUpdate(nextProps) {
-    if (nextProps !== this.props)  this.setState({ currentPage: 1 });
-  }
-
-	render(){
-		const places = this.props.places;
-		const {currentPage} = this.state;
+		const places = props.places;
 		const limit = 5;
 		const pageCount = 5;
 		const total = Math.ceil((places.length * limit) / pageCount);
 		const offset = (currentPage - 1) * pageCount;
-		console.log(offset)
 		return(
 			<div>
 			{
@@ -68,7 +60,7 @@ componentDidUpdate(nextProps) {
 	              <button
 	                {...getPageItemProps({
 	                  pageValue: 1,
-	                  onPageChange: this.handlePageChange
+	                  onPageChange: handlePageChange
 	                })}
 	              >
 	                first
@@ -78,7 +70,7 @@ componentDidUpdate(nextProps) {
 	                <button
 	                  {...getPageItemProps({
 	                    pageValue: previousPage,
-	                    onPageChange: this.handlePageChange
+	                    onPageChange: handlePageChange
 	                  })}
 	                >
 	                  {"<"}
@@ -96,7 +88,7 @@ componentDidUpdate(nextProps) {
 	                    style={activePage}
 	                    {...getPageItemProps({
 	                      pageValue: page,
-	                      onPageChange: this.handlePageChange
+	                      onPageChange: handlePageChange
 	                    })}
 	                  >
 	                    {page}
@@ -108,7 +100,7 @@ componentDidUpdate(nextProps) {
 	                <button
 	                  {...getPageItemProps({
 	                    pageValue: nextPage,
-	                    onPageChange: this.handlePageChange
+	                    onPageChange: handlePageChange
 	                  })}
 	                >
 	                  {">"}
@@ -118,7 +110,7 @@ componentDidUpdate(nextProps) {
 	              <button
 	                {...getPageItemProps({
 	                  pageValue: totalPages,
-	                  onPageChange: this.handlePageChange
+	                  onPageChange: handlePageChange
 	                })}
 	              >
 	                last
@@ -128,6 +120,5 @@ componentDidUpdate(nextProps) {
 			</Pagination>
 			</div>
 		)
-	}
 }
 export default PlaceList;
