@@ -10,12 +10,12 @@ function PlaceList(props){
 	const handlePageChange = (page) =>{
 		setCurrentPage(page)
 	}
+	const places = props.places;
 
 	useEffect(() =>{
 		setCurrentPage(1)
-	},[props.places])
+	},[places])
 
-		const places = props.places;
 		const limit = 5;
 		const pageCount = 5;
 		const total = Math.ceil((places.length * limit) / pageCount);
