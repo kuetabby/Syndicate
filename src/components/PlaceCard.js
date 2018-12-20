@@ -1,4 +1,4 @@
-import React, { Suspense, useState } from 'react';
+import React, { Suspense, useReducer } from 'react';
 import PlaceList from './Place/PlaceList';
 import FooterIns from './Footer/FooterIns';
 import SearchBox from './SearchBox/SearchBox';
@@ -7,21 +7,34 @@ import { Spinner } from './Spinner'
 
 
 function PlaceCard(){
-	useState(places)
-	const [searchfield, setField] = useState('')
+	const [state, dispatch] = useReducer((state, action) =>{
+		switch(action.type){
+			case 'Change_Field': return{
+				...state,
+				searchfield: action.payload
+			}
+			case 'Request_Success': return{
+				...state,
+				palace: action.payload,
+			}
+			default: return state
+		}
+	},{
+		palace: places,
+		searchfield: '',
+	})
 
 	const onSearchChange = (event) =>{
-		setField(event.target.value)
+		dispatch({type: 'Change_Field', payload: event.target.value})
 	}
 
-  	const filteredPlace = places.filter(place =>{
+  	const filteredPlace = state.palace.filter(place =>{
 		return(
-			 place.name.toLowerCase().includes(searchfield.toLowerCase())
+			 place.name.toLowerCase().includes(state.searchfield.toLowerCase())
 				||
-			 place.region.toLowerCase().includes(searchfield.toLowerCase())
+			 place.region.toLowerCase().includes(state.searchfield.toLowerCase())
 		);
 	})
-	console.log(filteredPlace)
 	return(
 		<div className='tc'>
 			<Suspense fallback={<Spinner size='medium' />}>
